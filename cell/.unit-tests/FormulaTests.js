@@ -3814,13 +3814,13 @@ $( function () {
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00-05-02" );
 
-        oParser = new parserFormula( "TEXT(123,\"tt:mm:ss\")", "A2", ws );
+        oParser = new parserFormula( "TEXT(123,\"tt.mm.ss\")", "A2", ws );
         ok( oParser.parse() );
-        strictEqual( oParser.calculate().getValue(), "00:00:00" );
+        strictEqual( oParser.calculate().getValue(), "00.00.00" );
 
-        oParser = new parserFormula( "TEXT(123,\"yleinen\")", "A2", ws );
+        oParser = new parserFormula( "TEXT(125,\"yleinen\")", "A2", ws );
         ok( oParser.parse() );
-        strictEqual( oParser.calculate().getValue(), "123" );
+        strictEqual( oParser.calculate().getValue(), "125" );
 
 //__________________________________fy________________________________________________
         AscCommon.setCurrentCultureInfo(1043);
@@ -3831,6 +3831,10 @@ $( function () {
         oParser = new parserFormula( "TEXT(123,\"uu:mm:ss\")", "A2", ws );
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
+
+        oParser = new parserFormula( "TEXT(126,\"standaard\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "126" );
 
         AscCommon.setCurrentCultureInfo(culturelciddefault);
 //__________________________________fr________________________________________________
@@ -3843,6 +3847,10 @@ $( function () {
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
 
+        oParser = new parserFormula( "TEXT(123,\"standard\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
+
         AscCommon.setCurrentCultureInfo(culturelciddefault);
 //_______________________________de___________________________________________________
         AscCommon.setCurrentCultureInfo(1031);
@@ -3853,6 +3861,10 @@ $( function () {
         oParser = new parserFormula( "TEXT(123,\"hh:mm:ss\")", "A2", ws );
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
+
+        oParser = new parserFormula( "TEXT(123,\"standard\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
 
         AscCommon.setCurrentCultureInfo(culturelciddefault);
 //_______________________________da____________________________________________________
@@ -3865,6 +3877,25 @@ $( function () {
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
 
+        oParser = new parserFormula( "TEXT(123,\"standard\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
+
+        AscCommon.setCurrentCultureInfo(culturelciddefault);
+//_______________________________it___________________________________________________
+        AscCommon.setCurrentCultureInfo(1040);
+        oParser = new parserFormula( "TEXT(123,\"gg-mm-aa\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "00-05-02" );
+
+        oParser = new parserFormula( "TEXT(123,\"hh:mm:ss\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "00:00:00" );
+
+        oParser = new parserFormula( "TEXT(123,\"standard\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
+
         AscCommon.setCurrentCultureInfo(culturelciddefault);
 //_____________________________special________________________________________________
         AscCommon.setCurrentCultureInfo(1032);
@@ -3876,7 +3907,16 @@ $( function () {
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
 
+        oParser = new parserFormula( "TEXT(123,\"γενικός τύπος\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
+
         AscCommon.setCurrentCultureInfo(culturelciddefault);
+
+        AscCommon.setCurrentCultureInfo(1028);
+        oParser = new parserFormula( "TEXT(123,\"g/通用格式\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
 
         AscCommon.setCurrentCultureInfo(1029);
         oParser = new parserFormula( "TEXT(123,\"rr-mm-dd\")", "A2", ws );
@@ -3886,6 +3926,10 @@ $( function () {
         oParser = new parserFormula( "TEXT(123,\"hh:mm:ss\")", "A2", ws );
         ok( oParser.parse() );
         strictEqual( oParser.calculate().getValue(), "00:00:00" );
+
+        oParser = new parserFormula( "TEXT(123,\"vęeobecný\")", "A2", ws );
+        ok( oParser.parse() );
+        strictEqual( oParser.calculate().getValue(), "123" );
 
         AscCommon.setCurrentCultureInfo(culturelciddefault);
 
